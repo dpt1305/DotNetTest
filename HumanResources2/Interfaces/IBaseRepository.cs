@@ -1,5 +1,4 @@
-﻿using System;
-namespace HumanResources2.Interfaces
+﻿namespace HumanResources2.Interfaces
 {
     public interface IBaseRepository<T>
     {
@@ -13,4 +12,5 @@ namespace HumanResources2.Interfaces
 
     }
 }
+
 

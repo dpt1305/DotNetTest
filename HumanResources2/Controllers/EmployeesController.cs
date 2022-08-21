@@ -1,8 +1,7 @@
-﻿using HumanResources2.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using HumanResources2.DTO;
+using HumanResources2.Interfaces;
 using HumanResources2.Model;
-using HumanResources2.DTO;
-using static Dapper.SqlMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HumanResources2.Controllers
 {
@@ -24,8 +23,8 @@ namespace HumanResources2.Controllers
             string? departureId = employeeDto.DepartureId ?? null;
             string guid = Guid.NewGuid().ToString();
 
-            Employee newEmployee = (departureId == null) 
-                ? new Employee(guid, name, age) 
+            Employee newEmployee = (departureId == null)
+                ? new Employee(guid, name, age)
                 : new Employee(guid, name, age, departureId);
             try
             {
@@ -49,7 +48,7 @@ namespace HumanResources2.Controllers
             catch (Exception ex)
             {
                 return StatusCode(400, ex.Message);
-            }   
+            }
         }
 
         [HttpGet("{id}")]
@@ -96,3 +95,4 @@ namespace HumanResources2.Controllers
         }
     }
 }
+
