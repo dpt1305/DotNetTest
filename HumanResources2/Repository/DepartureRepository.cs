@@ -27,8 +27,14 @@ public class DepartureRepository: IDepartureRepository
         //    //throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Departure>> Delete(Departure entity)
+    public async Task<IEnumerable<Departure>> Delete(Guid id)
     {
+        var query = $"DELETE FROM Departures WHERE DepartureID = \'{id}\'";
+        using (var connection = _context.CreateConnection())
+        {
+            var daparture = await connection.QueryAsync<Departure>(query);
+            return daparture;
+        }
         throw new NotImplementedException();
     }
 
@@ -42,9 +48,9 @@ public class DepartureRepository: IDepartureRepository
         }
     }
 
-    public async Task<IEnumerable<Departure>> FindOneById(Departure entity)
+    public async Task<IEnumerable<Departure>> FindOneById(Guid id)
     {
-        var query = $"SELECT de.DepartureID, de.Name FROM Departures as de WHERE de.DepartureID = {entity.DepartureID}";
+        var query = $"SELECT de.DepartureID, de.Name FROM Departures as de WHERE de.DepartureID = \'{id}\'";
         using (var connection = _context.CreateConnection())
         {
             var daparture = await connection.QueryAsync<Departure>(query);
@@ -55,7 +61,7 @@ public class DepartureRepository: IDepartureRepository
 
     public async Task<IEnumerable<Departure>> Update(Departure entity)
     {
-        var query = $"UPDATE Departures SET Name=\'{entity.Name}\' WHERE DepartureID = {entity.DepartureID}";
+        var query = $"UPDATE Departures SET Name=\'{entity.Name}\' WHERE DepartureID = \'{entity.DepartureID}\';";
         using (var connection = _context.CreateConnection())
         {
             var daparture = await connection.QueryAsync<Departure>(query);
