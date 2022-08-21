@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 // dapper connect
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IDepartureRepository, DepartureRepository>();
-
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 var app = builder.Build();
 

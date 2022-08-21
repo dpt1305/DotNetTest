@@ -20,7 +20,7 @@ public class DeparturesController: ControllerBase
     {
         try
         {
-            var departures = await _departureRepo.FindAll();
+            IEnumerable<Departure> departures = await _departureRepo.FindAll();
             return Ok(departures);
         }
         catch (Exception ex)

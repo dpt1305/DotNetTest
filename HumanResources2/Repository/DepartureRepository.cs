@@ -21,7 +21,7 @@ public class DepartureRepository: IDepartureRepository
 
             using (var connection = _context.CreateConnection())
         {
-            var dapartures = await connection.QueryAsync<Departure>(query);
+            IEnumerable<Departure> dapartures = await connection.QueryAsync<Departure>(query);
             return dapartures;
         }
         //    //throw new NotImplementedException();
