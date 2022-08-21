@@ -1,5 +1,5 @@
 ﻿using HumanResources2.Context;
-using HumanResources2.Contracts;
+using HumanResources2.Interfaces;
 using HumanResources2.Repository;
 
 var builder = WebApplication.CreateBuilder(args);

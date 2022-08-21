@@ -1,5 +1,5 @@
 ﻿using System;
-using HumanResources2.Contracts;
+using HumanResources2.Interfaces;
 using HumanResources2.DTO;
 using HumanResources2.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +21,7 @@ public class DeparturesController: ControllerBase
     {
         try
         {
-            var departures = await _departureRepo.GetAllDepartures();
+            var departures = await _departureRepo.FindAll();
             return Ok(departures);
         }
         catch (Exception ex)
@@ -37,7 +37,7 @@ public class DeparturesController: ControllerBase
             var name = departureDto.Name;
             var departure = new Departure(name);
 
-            var query = await _departureRepo.CreateNewDeparture(departure);
+            var query = await _departureRepo.Create(departure);
 
             return Ok($"Success.{query}");
         }
