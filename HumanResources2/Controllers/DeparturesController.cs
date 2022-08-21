@@ -1,5 +1,4 @@
-﻿using System;
-using HumanResources2.Interfaces;
+﻿using HumanResources2.Interfaces;
 using HumanResources2.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +6,10 @@ namespace HumanResources2.Controllers;
 
 [ApiController]
 [Route("/api/departures")]
-public class DeparturesController: ControllerBase
+public class DeparturesController : ControllerBase
 {
     private readonly IDepartureRepository _departureRepo;
-    public DeparturesController(IDepartureRepository departureRepo) 
+    public DeparturesController(IDepartureRepository departureRepo)
     {
         _departureRepo = departureRepo;
     }
@@ -92,4 +91,5 @@ public class DeparturesController: ControllerBase
 
     }
 }
+
 

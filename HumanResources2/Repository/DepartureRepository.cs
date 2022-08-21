@@ -1,13 +1,11 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using HumanResources2.Context;
 using HumanResources2.Interfaces;
 using HumanResources2.Model;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HumanResources2.Repository;
 
-public class DepartureRepository: IDepartureRepository
+public class DepartureRepository : IDepartureRepository
 {
     private readonly DapperContext _context;
     public DepartureRepository(DapperContext context)
@@ -19,7 +17,7 @@ public class DepartureRepository: IDepartureRepository
     {
         string query = $"INSERT INTO Departures(DepartureId, Name) VALUES (\'{entity.DepartureID}\', \'{entity.Name}\');";
 
-            using (var connection = _context.CreateConnection())
+        using (var connection = _context.CreateConnection())
         {
             IEnumerable<Departure> dapartures = await connection.QueryAsync<Departure>(query);
             return dapartures;
@@ -67,8 +65,8 @@ public class DepartureRepository: IDepartureRepository
             var daparture = await connection.QueryAsync<Departure>(query);
             return daparture;
         }
-        throw new NotImplementedException();
     }
 
 }
+
 

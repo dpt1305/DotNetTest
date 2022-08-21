@@ -1,5 +1,4 @@
-﻿using System;
-namespace HumanResources2.Model
+﻿namespace HumanResources2.Model
 {
     public class Departure
     {
@@ -18,4 +17,5 @@ namespace HumanResources2.Model
         }
     }
 }
+
 
